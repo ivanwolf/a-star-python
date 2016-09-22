@@ -1,0 +1,62 @@
+import time
+import random
+from state import State
+from astar import astar
+from idea import idastar
+
+
+def generator(n):
+    lista = [i + 1 for i in range(n)]
+    random.shuffle(lista)
+    return State(lista)
+
+s_0 = generator(15)
+s_1 = State(s_0.array)
+
+print('INPUT: %s' % s_0)
+now = time.time()
+print('')
+print('Ejecutando A* w = 1   n = 10')
+r1 = astar(s_0, w=1)
+print('Tiempo         : %.4f' % (time.time() - now))
+print('Expansiones    : %6d' % r1[0])
+print('Nodos Generados: %6d' % r1[1])
+print('Largo solución : %6d' % r1[2].largo_path())
+now = time.time()
+print('\n')
+print('Ejecutando IDA* w = 1   n = 10')
+r2 = idastar(s_1, w=1)
+print('Tiempo         : %.4f' % (time.time() - now))
+print('Expansiones    : %6d' % r2[0])
+print('Nodos Generados: %6d' % r2[1])
+now = time.time()
+print('')
+print('Ejecutando A* w = 1.5   n = 10')
+r1 = astar(s_0, w=1.5)
+print('Tiempo         : %.4f' % (time.time() - now))
+print('Expansiones    : %6d' % r1[0])
+print('Nodos Generados: %6d' % r1[1])
+print('Largo solución : %6d' % r1[2].largo_path())
+now = time.time()
+print('\n')
+print('Ejecutando IDA* w = 1.5   n = 10')
+r2 = idastar(s_0, w=1.5)
+print('Tiempo         : %.4f' % (time.time() - now))
+print('Expansiones    : %6d' % r2[0])
+print('Nodos Generados: %6d' % r2[1])
+now = time.time()
+print('')
+print('Ejecutando A* w = 2.0   n = 10')
+r1 = astar(s_0, w=2.0)
+print('Tiempo         : %.4f' % (time.time() - now))
+print('Expansiones    : %6d' % r1[0])
+print('Nodos Generados: %6d' % r1[1])
+print('Largo solución : %6d' % r1[2].largo_path())
+now = time.time()
+print('\n')
+print('Ejecutando IDA* w = 2.0 n = 10')
+r2 = idastar(s_0, w=2.0)
+print('Tiempo         : %.4f' % (time.time() - now))
+print('Expansiones    : %6d' % r2[0])
+print('Nodos Generados: %6d' % r2[1])
+now = time.time()
